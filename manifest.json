@@ -3,7 +3,7 @@
 	"name": "Synced Block Buddy",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Synced Block Buddy is a plugin for Obsidian that allows you to sync blocks between your notes.",
+	"description": "Synced Block Buddy is a plugin that allows you to sync blocks between your notes.",
 	"author": "Pinakin",
 	"authorUrl": "https://b50.dev",
 	"fundingUrl": "https://buymeacoffee.com/pinakin",

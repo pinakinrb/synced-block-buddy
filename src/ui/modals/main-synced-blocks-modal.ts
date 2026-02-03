@@ -14,7 +14,7 @@ export class MainSyncedBlocksModal extends Modal {
 		this.plugin = plugin;
 	}
 
-	async onOpen() {
+	onOpen() {
 		const { contentEl } = this;
 		contentEl.empty();
 
@@ -144,7 +144,7 @@ export class MainSyncedBlocksModal extends Modal {
 
 		// Add author promotion section with mascot
 		contentEl.createEl("hr");
-		const mascotPath = await getAssetPath(this.plugin, "assets/mascot.png");
+		const mascotPath = getAssetPath(this.plugin, "assets/mascot.png");
 		createAuthorPromo(contentEl, mascotPath);
 	}
 

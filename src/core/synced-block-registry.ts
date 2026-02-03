@@ -61,7 +61,7 @@ export class SyncedBlockRegistry {
 	 * Gets parsed blocks from a file, using cache if file hasn't changed
 	 * Uses file modification time to detect changes
 	 */
-	private async getParsedBlocks(file: TFile, fileText: string): Promise<ParsedBlock[]> {
+	private getParsedBlocks(file: TFile, fileText: string): ParsedBlock[] {
 		const filePath = file.path;
 		const fileMtime = file.stat.mtime;
 
@@ -417,7 +417,7 @@ export class SyncedBlockRegistry {
 			const fileText = await this.app.vault.read(file);
 
 			// Use file modification time-based cache for parsed blocks
-			const blockRanges = await this.getParsedBlocks(file, fileText);
+			const blockRanges = this.getParsedBlocks(file, fileText);
 
 			// Find all instances of this block ID (not just the first one)
 			// This handles cases where duplicates exist in the same file
@@ -505,11 +505,11 @@ export class SyncedBlockRegistry {
 	/**
 	 * Handles blocks that are missing from a file (were removed)
 	 */
-	async handleBlocksMissingFromFile(
+	handleBlocksMissingFromFile(
 		filePath: string,
 		blocksInFile: Array<{ blockId: string }>,
 		previousBlockIds: string[] = []
-	): Promise<void> {
+	): void {
 		// Use provided previousBlockIds, or fall back to current fileIndex if not provided
 		const knownBlockIds = previousBlockIds.length > 0 
 			? previousBlockIds 
@@ -557,7 +557,7 @@ export class SyncedBlockRegistry {
 			const fileText = await this.app.vault.read(file);
 
 			// Parse blocks from file (with caching based on file modification time)
-			const blocksInFile = await this.getParsedBlocks(file, fileText);
+			const blocksInFile = this.getParsedBlocks(file, fileText);
 
 			// Detect duplicate block IDs in this file
 			const duplicates = this.detectDuplicateBlocks(blocksInFile);
@@ -592,7 +592,7 @@ export class SyncedBlockRegistry {
 			}
 
 			// Handle removals (must use previous block IDs to detect what was removed)
-			await this.handleBlocksMissingFromFile(filePath, blocksInFile, previousBlockIds);
+			this.handleBlocksMissingFromFile(filePath, blocksInFile, previousBlockIds);
 
 			// Update file index after processing
 			this.registry.fileIndex[filePath] = blocksInFile.map((b) => b.blockId);
@@ -691,7 +691,7 @@ export class SyncedBlockRegistry {
 	/**
 	 * Handles file rename
 	 */
-	async handleFileRename(oldPath: string, newPath: string): Promise<void> {
+	handleFileRename(oldPath: string, newPath: string): void {
 		// Move fileIndex entry
 		if (this.registry.fileIndex[oldPath]) {
 			this.registry.fileIndex[newPath] = this.registry.fileIndex[oldPath];
@@ -718,7 +718,7 @@ export class SyncedBlockRegistry {
 	/**
 	 * Handles file delete
 	 */
-	async handleFileDelete(filePath: string): Promise<void> {
+	handleFileDelete(filePath: string): void {
 		// Remove all location entries for blocks in this file
 		const blockIds = this.registry.fileIndex[filePath] || [];
 		for (const blockId of blockIds) {

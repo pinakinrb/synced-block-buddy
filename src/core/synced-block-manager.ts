@@ -43,7 +43,7 @@ export class SyncedBlockManager {
 		this.plugin.registerEvent(
 			this.app.vault.on("delete", (file) => {
 				if (file instanceof TFile && file.extension === "md") {
-					void this.handleFileDelete(file.path);
+					this.handleFileDelete(file.path);
 				}
 			})
 		);
@@ -52,7 +52,7 @@ export class SyncedBlockManager {
 		this.plugin.registerEvent(
 			this.app.vault.on("rename", (file, oldPath) => {
 				if (file instanceof TFile && file.extension === "md") {
-					void this.handleFileRename(file.path, oldPath);
+					this.handleFileRename(file.path, oldPath);
 				}
 			})
 		);
@@ -100,9 +100,9 @@ export class SyncedBlockManager {
 	/**
 	 * Handles file rename events
 	 */
-	private async handleFileRename(newPath: string, oldPath: string): Promise<void> {
+	private handleFileRename(newPath: string, oldPath: string): void {
 		try {
-			await this.registry.handleFileRename(oldPath, newPath);
+			this.registry.handleFileRename(oldPath, newPath);
 		} catch (error) {
 			// Log error for debugging (background operation, no user notification)
 			console.error(`[Synced Blocks] Error handling file rename from ${oldPath} to ${newPath}:`, error);
@@ -112,9 +112,9 @@ export class SyncedBlockManager {
 	/**
 	 * Handles file deletion events
 	 */
-	private async handleFileDelete(filePath: string): Promise<void> {
+	private handleFileDelete(filePath: string): void {
 		try {
-			await this.registry.handleFileDelete(filePath);
+			this.registry.handleFileDelete(filePath);
 		} catch (error) {
 			// Log error for debugging (background operation, no user notification)
 			console.error(`[Synced Blocks] Error handling file delete ${filePath}:`, error);

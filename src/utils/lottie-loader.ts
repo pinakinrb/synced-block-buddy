@@ -16,7 +16,7 @@ import {
  * @param assetPath - The path to the Lottie JSON file relative to the plugin folder (e.g., "assets/animation.json")
  * @returns The animation data as a JSON object, or null if not found
  */
-export async function loadLottieData(plugin: Plugin, assetPath: string): Promise<Record<string, unknown> | null> {
+export function loadLottieData(plugin: Plugin, assetPath: string): Record<string, unknown> | null {
 	const pluginWithManifest = plugin as PluginWithManifest;
 	const manifest = pluginWithManifest.manifest;
 	if (!manifest || !manifest.dir) {
@@ -129,7 +129,7 @@ export async function loadAndRenderLottie(
 		renderer?: "svg" | "canvas" | "html";
 	}
 ): Promise<AnimationItem | null> {
-	const animationData = await loadLottieData(plugin, assetPath);
+	const animationData = loadLottieData(plugin, assetPath);
 	if (!animationData) {
 		return null;
 	}

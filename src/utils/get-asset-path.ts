@@ -14,7 +14,7 @@ import {
  * @param assetPath - The path to the asset relative to the plugin folder (e.g., "assets/mascot.png")
  * @returns The asset as a data URI, or empty string if not found
  */
-export async function getAssetPath(plugin: Plugin, assetPath: string): Promise<string> {
+export function getAssetPath(plugin: Plugin, assetPath: string): string {
 	// Access the plugin's manifest directory
 	const pluginWithManifest = plugin as PluginWithManifest;
 	const manifest = pluginWithManifest.manifest;

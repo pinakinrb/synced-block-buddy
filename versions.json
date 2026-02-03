@@ -1,6 +1,7 @@
 {
 	"1.0.0": "Initial release",
 	"1.1": "Fix description alignment with community plugin listing",
-	"1.2": "Add onboarding tutorial"
+	"1.2": "Add onboarding tutorial",
+	"1.3": "Fix async/await issues, sentence case, and ESLint configuration"
   }
   

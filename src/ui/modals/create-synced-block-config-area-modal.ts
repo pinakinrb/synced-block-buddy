@@ -80,7 +80,7 @@ export class CreateSyncedBlockConfigArea extends Modal {
 			this.createButton = button;
 			button.setButtonText("Create").setCta().onClick(() => {
 				void (async () => {
-					if (await this.validateAll()) {
+					if (this.validateAll()) {
 						await this.createBlock();
 					}
 				})();
@@ -111,14 +111,12 @@ export class CreateSyncedBlockConfigArea extends Modal {
 
 		// Schedule validation after debounce delay
 		this.nameValidationTimeout = window.setTimeout(() => {
-			void (async () => {
-				await this.validateName();
-				this.nameValidationTimeout = null;
-			})();
+			this.validateName();
+			this.nameValidationTimeout = null;
 		}, this.VALIDATION_DEBOUNCE_MS);
 	}
 
-	private async validateName(): Promise<boolean> {
+	private validateName(): boolean {
 		const name = this.blockName.trim();
 		
 		if (!name) {
@@ -149,8 +147,8 @@ export class CreateSyncedBlockConfigArea extends Modal {
 		return true;
 	}
 
-	private async validateAll(): Promise<boolean> {
-		const nameValid = await this.validateName();
+	private validateAll(): boolean {
+		const nameValid = this.validateName();
 		const contentValid = this.validateContent();
 		return nameValid && contentValid;
 	}

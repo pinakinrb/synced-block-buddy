@@ -24,7 +24,7 @@ export function createAuthorPromo(container: HTMLElement, mascotPath?: string): 
 	const aboutSection = contentSection.createDiv("synced-blocks-author-about");
 	aboutSection.createEl("h3", { text: "About the author" });
 	aboutSection.createEl("p", { 
-		text: "Hello, i am Pinakin, the creator of Synced Block Buddy. I build tools to make your obsidian workflow more efficient and enjoyable." 
+		text: "Hello, I am Pinakin, the creator of Synced Block Buddy. I build tools to make your Obsidian workflow more efficient and enjoyable."
 	});
 	
 	// Links section

@@ -107,9 +107,8 @@ export class SyncedBlocksSettingTab extends PluginSettingTab {
 
 		// Add author promotion section with mascot
 		containerEl.createEl("hr");
-		// Load mascot asynchronously and update the UI when ready
-		void getAssetPath(this.plugin, "assets/mascot.png").then((mascotPath) => {
-			createAuthorPromo(containerEl, mascotPath);
-		});
+		// Load mascot and update the UI
+		const mascotPath = getAssetPath(this.plugin, "assets/mascot.png");
+		createAuthorPromo(containerEl, mascotPath);
 	}
 }

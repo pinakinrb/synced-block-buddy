@@ -2,10 +2,15 @@ import { Plugin } from "obsidian";
 import { SyncedBlockRegistryData } from "../types/synced-block-registry";
 
 /**
+ * Storage key constant
+ */
+const STORAGE_KEY = "synced-blocks-registry";
+
+/**
  * Plugin data structure stored by Obsidian
  */
 interface PluginData {
-	[SyncedBlockStorage.STORAGE_KEY]?: SyncedBlockRegistryData;
+	[STORAGE_KEY]?: SyncedBlockRegistryData;
 	[key: string]: unknown;
 }
 
@@ -15,7 +20,6 @@ interface PluginData {
  * Implements caching to reduce redundant I/O operations
  */
 export class SyncedBlockStorage {
-	private static readonly STORAGE_KEY = "synced-blocks-registry";
 	private static cachedPluginData: PluginData | null = null;
 	private static cacheTimestamp: number = 0;
 
@@ -42,11 +46,12 @@ export class SyncedBlockStorage {
 			}
 
 			// Check if registry data exists
-			const registryData = data[this.STORAGE_KEY];
-			if (!registryData || !registryData.blocks) {
+			const registryData = data[STORAGE_KEY];
+			if (!registryData || typeof registryData !== "object" || !("blocks" in registryData)) {
 				return null;
 			}
 
+			// TypeScript now knows registryData is SyncedBlockRegistryData due to the checks above
 			return registryData;
 		} catch (error) {
 			// Log error for debugging (storage load failure is non-critical, returns null)
@@ -60,6 +65,7 @@ export class SyncedBlockStorage {
 	/**
 	 * Saves registry data to persistent storage
 	 * Uses cached plugin data to avoid redundant loads
+	 * Preserves writeGuards from existing data
 	 */
 	static async save(
 		plugin: Plugin,
@@ -75,10 +81,20 @@ export class SyncedBlockStorage {
 				existingData = loadedData || {};
 			}
 
+			// Get existing registry data to preserve writeGuards
+			const existingRegistry = existingData[STORAGE_KEY];
+			const writeGuards = (existingRegistry && typeof existingRegistry === "object" && "writeGuards" in existingRegistry)
+				? existingRegistry.writeGuards
+				: {};
+
 			// Merge with existing data, keeping other plugin data intact
+			// Include writeGuards to satisfy the full SyncedBlockRegistryData type
 			const mergedData = {
 				...existingData,
-				[this.STORAGE_KEY]: data,
+				[STORAGE_KEY]: {
+					...data,
+					writeGuards,
+				},
 			};
 
 			// Save to disk

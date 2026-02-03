@@ -134,6 +134,6 @@ export async function loadAndRenderLottie(
 		return null;
 	}
 
-	return renderLottieAnimation(containerEl, animationData as unknown, options);
+	return renderLottieAnimation(containerEl, animationData, options);
 }
 

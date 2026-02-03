@@ -19,7 +19,7 @@ export class MainSyncedBlocksModal extends Modal {
 		contentEl.empty();
 
 		// Set modal title
-		contentEl.createEl("h2", { text: "Synced Block Buddy" });
+		contentEl.createEl("h2", { text: "Synced block buddy" });
 
 		// Create New Synced Block button
 		new Setting(contentEl)

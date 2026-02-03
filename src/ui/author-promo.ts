@@ -12,7 +12,7 @@ export function createAuthorPromo(container: HTMLElement, mascotPath?: string): 
 			mascotContainer.createEl("img", {
 				attr: {
 					src: mascotPath,
-					alt: "Synced Block Buddy Mascot"
+					alt: "Synced block buddy mascot"
 				}
 			});
 		}
@@ -24,7 +24,7 @@ export function createAuthorPromo(container: HTMLElement, mascotPath?: string): 
 	const aboutSection = contentSection.createDiv("synced-blocks-author-about");
 	aboutSection.createEl("h3", { text: "About the author" });
 	aboutSection.createEl("p", { 
-		text: "Hello, I am Pinakin, the creator of Synced Block Buddy. I build tools to make your Obsidian workflow more efficient and enjoyable."
+		text: "I am the creator of this plugin. I build tools to make your workflow more efficient and enjoyable."
 	});
 	
 	// Links section
@@ -43,7 +43,7 @@ export function createAuthorPromo(container: HTMLElement, mascotPath?: string): 
 	
 	// Buy Me a Coffee link
 	const coffeeLink = linksSection.createEl("a", {
-		text: "☕ buy me a coffee",
+		text: "Buy me a coffee",
 		href: "https://buymeacoffee.com/pinakin",
 		attr: {
 			target: "_blank",

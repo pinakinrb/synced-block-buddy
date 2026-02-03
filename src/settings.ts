@@ -96,7 +96,7 @@ export class SyncedBlocksSettingTab extends PluginSettingTab {
 		// Show tutorial again button
 		new Setting(containerEl)
 			.setName("Show tutorial again")
-			.setDesc("Re-open the onboarding tutorial to learn how to use Synced Block Buddy")
+			.setDesc("Reopen the onboarding tutorial to learn how to use synced block buddy")
 			.addButton((button) => {
 				button.setButtonText("Open tutorial")
 					.setCta()

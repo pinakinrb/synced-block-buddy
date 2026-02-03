@@ -168,7 +168,7 @@ export class OnboardingModal extends Modal {
 			new Setting(rightButtons)
 				.addButton((button) => {
 					const isLastStep = this.currentStepIndex === this.steps.length - 1;
-					button.setButtonText(step.nextButtonText || (isLastStep ? "Get Started" : "Next"))
+					button.setButtonText(step.nextButtonText || (isLastStep ? "Get started" : "Next"))
 						.setCta()
 						.onClick(() => {
 							if (isLastStep) {

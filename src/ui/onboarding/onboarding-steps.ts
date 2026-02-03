@@ -82,7 +82,7 @@ async function createWelcomeStep(containerEl: HTMLElement, plugin?: SyncedBlockB
 		fallbackIcon.createEl("span", { text: "🔄" });
 		
 		animationContainer.createEl("p", {
-			text: "Synced Block Buddy lets you create content once and reuse it across multiple notes.",
+			text: "Synced block buddy lets you create content once and reuse it across multiple notes.",
 			attr: { style: "text-align: center; color: var(--text-muted); padding: 1em 2em; margin: 0;" }
 		});
 	}
@@ -96,7 +96,7 @@ async function createWelcomeStep(containerEl: HTMLElement, plugin?: SyncedBlockB
 
 	// Description text
 	textSection.createEl("p", {
-		text: "Synced Block Buddy lets you create content once and reuse it across multiple notes. When you update the content, all instances update automatically.",
+		text: "Synced block buddy lets you create content once and reuse it across multiple notes. When you update the content, all instances update automatically.",
 		attr: {
 			style: "text-align: center; line-height: 1.8; color: var(--text-normal); margin: 0; max-width: 500px;"
 		}
@@ -108,7 +108,7 @@ async function createWelcomeStep(containerEl: HTMLElement, plugin?: SyncedBlockB
  */
 function createConceptsStep(containerEl: HTMLElement, plugin?: SyncedBlockBuddyPlugin): void {
 	containerEl.createEl("p", {
-		text: "Synced Block Buddy works in two simple steps:",
+		text: "Synced block buddy works in two simple steps:",
 		attr: { style: "margin-bottom: 1.5em; line-height: 1.6;" }
 	});
 
@@ -148,7 +148,7 @@ function createConceptsStep(containerEl: HTMLElement, plugin?: SyncedBlockBuddyP
  */
 function createAccessMethodsStep(containerEl: HTMLElement, plugin?: SyncedBlockBuddyPlugin): void {
 	containerEl.createEl("p", {
-		text: "You can access Synced Block Buddy in four ways:",
+		text: "You can access synced block buddy in four ways:",
 		attr: { style: "margin-bottom: 1.5em; line-height: 1.6;" }
 	});
 
@@ -204,7 +204,7 @@ function createAccessMethodsStep(containerEl: HTMLElement, plugin?: SyncedBlockB
 		attr: { style: "font-weight: 600; margin-bottom: 0.5em;" }
 	});
 		method4.createEl("div", {
-			text: "Go to settings → Synced Block Buddy to build index and manage blocks",
+			text: "Go to settings and synced block buddy to build index and manage blocks",
 			attr: { style: "color: var(--text-muted); font-size: 0.9em;" }
 		});
 }
@@ -215,7 +215,7 @@ function createAccessMethodsStep(containerEl: HTMLElement, plugin?: SyncedBlockB
  */
 function createCompletionStep(containerEl: HTMLElement, plugin?: SyncedBlockBuddyPlugin): void {
 	containerEl.createEl("p", {
-		text: "You're ready to start using Synced Block Buddy!",
+		text: "You're ready to start using synced block buddy!",
 		attr: { style: "margin-bottom: 1.5em; line-height: 1.6; font-size: 1.1em;" }
 	});
 
@@ -259,15 +259,15 @@ export function getOnboardingSteps(plugin: SyncedBlockBuddyPlugin): OnboardingSt
 	return [
 		{
 			id: "welcome",
-			title: "Welcome to Synced Block Buddy",
+			title: "Welcome to Synced block buddy",
 			content: (el) => createWelcomeStep(el, plugin),
 			showNext: true,
 			showSkip: true,
-			nextButtonText: "Start Tutorial",
+			nextButtonText: "Start tutorial",
 		},
 		{
 			id: "concepts",
-			title: "How Synced Block Buddy Works",
+			title: "How Synced block buddy works",
 			content: (el) => createConceptsStep(el, plugin),
 			showNext: true,
 			showPrevious: true,
@@ -275,7 +275,7 @@ export function getOnboardingSteps(plugin: SyncedBlockBuddyPlugin): OnboardingSt
 		},
 		{
 			id: "access",
-			title: "How to Use Synced Block Buddy",
+			title: "How to use Synced block buddy",
 			content: (el) => createAccessMethodsStep(el, plugin),
 			showNext: true,
 			showPrevious: true,
@@ -286,7 +286,7 @@ export function getOnboardingSteps(plugin: SyncedBlockBuddyPlugin): OnboardingSt
 			title: "You're All Set!",
 			content: (el) => createCompletionStep(el, plugin),
 			showPrevious: true,
-			nextButtonText: "Get Started",
+			nextButtonText: "Get started",
 		},
 	];
 }

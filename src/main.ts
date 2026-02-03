@@ -23,7 +23,7 @@ export default class SyncedBlockBuddyPlugin extends Plugin {
 		await this.syncManager.initialize();
 
 		// This creates an icon in the left ribbon.
-		this.addRibbonIcon("refresh-ccw", "Synced Block Buddy", (evt: MouseEvent) => {
+		this.addRibbonIcon("refresh-ccw", "Synced block buddy", (evt: MouseEvent) => {
 			new MainSyncedBlocksModal(this.app, this).open();
 		});
 

@@ -45,8 +45,8 @@ export default tseslint.config(
 			"obsidianmd/ui/sentence-case": [
 				"error",
 				{
-					brands: ["Synced Block Buddy", "Pinakin", "Obsidian"],
-					ignoreWords: ["I"],
+					brands: [],
+					ignoreWords: [],
 				},
 			],
 		},

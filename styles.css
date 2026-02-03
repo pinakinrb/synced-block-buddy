@@ -1,0 +1,249 @@
+/* Synced Block Styles */
+.synced-block-container {
+	border: 2px solid var(--interactive-accent, var(--text-accent));
+	border-radius: 4px;
+	margin: 1em 0;
+	background-color: var(--background-secondary);
+	overflow: hidden;
+}
+
+/* Preview-only mode: no border, no header, just content */
+.synced-block-container.synced-block-preview-only {
+	border: none;
+	background-color: transparent;
+	margin: 0.5em 0;
+}
+
+.synced-block-header {
+	background-color: var(--interactive-accent, var(--text-accent));
+	color: var(--text-on-accent, var(--text-normal));
+	padding: 0.5em 0.75em;
+	font-weight: 600;
+	font-size: 0.9em;
+	border-bottom: 1px solid var(--interactive-accent, var(--text-accent));
+}
+
+.synced-block-name {
+	display: inline-block;
+}
+
+.synced-block-content {
+	padding: 0.75em;
+	min-height: 1em;
+}
+
+/* Preview-only: reduce padding */
+.synced-block-preview-only .synced-block-content {
+	padding: 0.25em 0;
+}
+
+.synced-block-content-inner {
+	/* Inherit markdown styles from Obsidian */
+}
+
+.synced-block-plain-text {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.synced-block-empty {
+	padding: 1em;
+	color: var(--text-muted);
+	font-style: italic;
+	text-align: center;
+}
+
+.synced-block-empty::before {
+	content: "Empty synced block";
+}
+
+/* Make synced blocks non-editable and add pointer cursor */
+.synced-block-readonly {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	cursor: pointer;
+}
+
+.synced-block-container {
+	cursor: pointer;
+	position: relative;
+}
+
+/* Prevent text selection in synced blocks */
+.synced-block-container * {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+/* Mascot Styles */
+.synced-blocks-mascot {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1.5em 0;
+	padding: 1em 0;
+}
+
+.synced-blocks-mascot img {
+	max-width: 120px;
+	max-height: 120px;
+	width: auto;
+	height: auto;
+	border-radius: 8px;
+	opacity: 0.9;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.synced-blocks-mascot img:hover {
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+.synced-blocks-mascot-small {
+	margin: 1em 0;
+	padding: 0.5em 0;
+}
+
+.synced-blocks-mascot-small img {
+	max-width: 80px;
+	max-height: 80px;
+}
+
+/* Author Promotion Styles */
+.synced-blocks-author-promo {
+	display: flex;
+	gap: 1.5em;
+	align-items: flex-start;
+	margin-top: 2em;
+	padding-top: 1.5em;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+/* Mascot inline (next to promo) */
+.synced-blocks-mascot-inline {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.synced-blocks-mascot-inline img {
+	max-width: 140px;
+	max-height: 140px;
+	width: auto;
+	height: auto;
+	border-radius: 8px;
+	opacity: 0.9;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.synced-blocks-mascot-inline img:hover {
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+/* Author content section */
+.synced-blocks-author-content {
+	flex: 1;
+	min-width: 0;
+}
+
+.synced-blocks-author-about {
+	margin-bottom: 1em;
+}
+
+.synced-blocks-author-about h3 {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+	font-size: 1.1em;
+	color: var(--text-normal);
+}
+
+.synced-blocks-author-about p {
+	margin: 0.5em 0;
+	color: var(--text-muted);
+	font-size: 0.9em;
+	line-height: 1.5;
+}
+
+.synced-blocks-author-links {
+	display: flex;
+	gap: 1em;
+	flex-wrap: wrap;
+	margin-top: 1em;
+}
+
+.synced-blocks-author-link {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.5em 1em;
+	background-color: var(--interactive-normal);
+	color: var(--text-normal);
+	text-decoration: none;
+	border-radius: 4px;
+	font-size: 0.9em;
+	transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.synced-blocks-author-link:hover {
+	background-color: var(--interactive-hover);
+	transform: translateY(-1px);
+	text-decoration: none;
+}
+
+.synced-blocks-coffee-link {
+	background-color: var(--interactive-accent, var(--text-accent));
+	color: var(--text-on-accent, var(--text-normal));
+	font-weight: 500;
+}
+
+.synced-blocks-coffee-link:hover {
+	background-color: var(--interactive-accent-hover, var(--text-accent));
+	opacity: 0.9;
+}
+
+/* Lottie animation container */
+.lottie-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Error message styles */
+.synced-block-error {
+	color: var(--text-error);
+	font-size: 0.9em;
+	margin-top: -0.5em;
+	margin-bottom: 1em;
+	display: none;
+}
+
+.synced-block-error-visible {
+	display: block;
+}
+
+/* Conflict variant styles */
+.conflict-variant-selected {
+	background-color: var(--background-modifier-hover);
+	border-color: var(--interactive-accent);
+}
+
+.conflict-variant-selected .conflict-variant-radio {
+	color: var(--interactive-accent);
+}
+
+.conflict-variant-radio {
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	line-height: 1.5em;
+	text-align: center;
+	margin-right: 0.5em;
+	font-size: 1.2em;
+}

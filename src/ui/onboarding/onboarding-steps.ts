@@ -1,4 +1,3 @@
-import { loadAndRenderLottie } from "../../utils/lottie-loader";
 import SyncedBlockBuddyPlugin from "../../main";
 
 /**
@@ -20,9 +19,9 @@ export interface OnboardingStep {
 
 /**
  * Creates the welcome step content
- * Uses golden ratio (1.618) for layout: animation ~61.8%, text ~38.2%
+ * Uses golden ratio (1.618) for layout: icon ~61.8%, text ~38.2%
  */
-async function createWelcomeStep(containerEl: HTMLElement, plugin?: SyncedBlockBuddyPlugin): Promise<void> {
+function createWelcomeStep(containerEl: HTMLElement, plugin?: SyncedBlockBuddyPlugin): void {
 	// Main container with golden ratio layout
 	const mainContainer = containerEl.createDiv({
 		attr: {
@@ -30,62 +29,32 @@ async function createWelcomeStep(containerEl: HTMLElement, plugin?: SyncedBlockB
 		}
 	});
 
-	// Animation section - 61.8% of visual space (golden ratio)
-	const animationSection = mainContainer.createDiv({
+	// Visual section - 61.8% of visual space (golden ratio)
+	const visualSection = mainContainer.createDiv({
 		attr: {
 			style: "flex: 0 0 61.8%; display: flex; justify-content: center; align-items: center; min-height: 0; padding: 1em 0;"
 		}
 	});
 
-	// Animation container with proper sizing
-	const animationContainer = animationSection.createDiv({
+	// Visual container with proper sizing
+	const visualContainer = visualSection.createDiv({
 		attr: {
 			style: "width: 100%; height: 60%; max-width: 150px; max-height: 150px; display: flex; justify-content: center; align-items: center;"
 		}
 	});
 
-	// Try to load and render Lottie animation
-	// On mobile, the animation may not be available, so we always show fallback content
-	let animationLoaded = false;
-	if (plugin) {
-		try {
-			const animation = await loadAndRenderLottie(
-				plugin,
-				animationContainer,
-				"assets/onboarding-welcome.json",
-				{
-					loop: true,
-					autoplay: true,
-					renderer: "svg"
-				}
-			);
-
-			// Check if animation loaded successfully
-			if (animation) {
-				animationLoaded = true;
-			}
-		} catch {
-			// Animation loading failed (expected on mobile)
-			console.debug("[Synced Blocks] Animation not available, showing fallback content");
+	// Simple static visual element (no animation)
+	const iconContainer = visualContainer.createDiv({
+		attr: {
+			style: "font-size: 4em; text-align: center; margin: 0.5em 0; color: var(--text-accent);"
 		}
-	}
-
-	// Show fallback content if animation didn't load (mobile or error case)
-	if (!animationLoaded) {
-		animationContainer.empty();
-		// Create a simple icon or emoji as visual element
-		const fallbackIcon = animationContainer.createDiv({
-			attr: { 
-				style: "font-size: 4em; text-align: center; margin: 0.5em 0; color: var(--text-accent);" 
-			}
-		});
-		fallbackIcon.createEl("span", { text: "🔄" });
-		
-		animationContainer.createEl("p", {
-			text: "Synced block buddy lets you create content once and reuse it across multiple notes.",
-			attr: { style: "text-align: center; color: var(--text-muted); padding: 1em 2em; margin: 0;" }
-		});
-	}
+	});
+	iconContainer.createEl("span", { text: "🔄" });
+	
+	visualContainer.createEl("p", {
+		text: "Synced block buddy lets you create content once and reuse it across multiple notes.",
+		attr: { style: "text-align: center; color: var(--text-muted); padding: 1em 2em; margin: 0;" }
+	});
 
 	// Text section - 38.2% of visual space (golden ratio)
 	const textSection = mainContainer.createDiv({
@@ -247,7 +216,7 @@ function createCompletionStep(containerEl: HTMLElement, plugin?: SyncedBlockBudd
 		attr: { style: "margin: 0.5em 0; padding-left: 1.5em; color: var(--text-muted);" }
 	});
 	tipsList.createEl("li", { text: "Blocks sync automatically when you edit them" });
-	tipsList.createEl("li", { text: "Each block has a unique ID" });
+	tipsList.createEl("li", { text: "Each block has a unique id" });
 	tipsList.createEl("li", { text: "Block names must be unique" });
 	tipsList.createEl("li", { text: "Use build index to scan all files and find existing synced blocks in your vault" });
 }

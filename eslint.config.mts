@@ -29,9 +29,9 @@ export default defineConfig([
       parserOptions: { project: "./tsconfig.json" },
     },
     rules: {
-      // Override sentence-case to use warn level and custom options
+      // Enforce strict sentence case for all UI text
       "obsidianmd/ui/sentence-case": [
-        "warn",
+        "error",
         {
           brands: [],
           acronyms: ["OK"],

@@ -209,7 +209,7 @@ function createCompletionStep(containerEl: HTMLElement, plugin?: SyncedBlockBudd
 		attr: { style: "margin-top: 1.5em; padding: 1em; background: var(--background-modifier-border); border-radius: 4px; border-left: 3px solid var(--text-accent);" }
 	});
 	tipsContainer.createEl("div", {
-		text: "💡 Tips",
+		text: "Tips",
 		attr: { style: "font-weight: 600; margin-bottom: 0.5em;" }
 	});
 	const tipsList = tipsContainer.createEl("ul", {

@@ -4,6 +4,7 @@
 	"1.2": "Add onboarding tutorial",
 	"1.3": "Fix async/await issues, sentence case, and ESLint configuration",
 	"1.4": "Improve sentence case consistency and simplify UI text",
-	"1.5.0": "Prepare for next release"
+	"1.5.0": "Prepare for next release",
+	"1.5.1": "Fix sentence case for UI text (compliance with Obsidian guidelines)"
   }
   

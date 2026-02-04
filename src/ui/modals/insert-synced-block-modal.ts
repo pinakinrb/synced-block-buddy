@@ -26,7 +26,7 @@ export class InsertSyncedBlockModal extends Modal {
 		const activeView = this.app.workspace.getActiveViewOfType(MarkdownView);
 		if (!activeView) {
 			contentEl.createEl("p", {
-				text: "Open a markdown file in edit mode to insert a synced block",
+				text: "Open a Markdown file in edit mode to insert a synced block",
 				attr: { style: "color: var(--text-warning); margin-top: 1em;" }
 			});
 			return;
@@ -91,12 +91,12 @@ export class InsertSyncedBlockModal extends Modal {
 		
 		if (!activeView) {
 			// Show a notification instead of just logging
-			new Notice("Open a markdown file in edit mode to insert a synced block", 3000);
+			new Notice("Open a Markdown file in edit mode to insert a synced block", 3000);
 			return;
 		}
 
 		if (!activeView.file) {
-			new Notice("No file is open. Open a markdown file to insert a synced block", 3000);
+			new Notice("No file is open. Open a Markdown file to insert a synced block", 3000);
 			return;
 		}
 

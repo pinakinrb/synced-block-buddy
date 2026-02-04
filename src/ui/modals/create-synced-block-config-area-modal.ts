@@ -191,7 +191,7 @@ export class CreateSyncedBlockConfigArea extends Modal {
 		
 		const activeView = this.app.workspace.getActiveViewOfType(MarkdownView);
 		if (!activeView || !activeView.file) {
-			new Notice("Open a markdown file in edit mode to create a synced block", 3000);
+			new Notice("Open a Markdown file in edit mode to create a synced block", 3000);
 			return;
 		}
 
@@ -201,7 +201,7 @@ export class CreateSyncedBlockConfigArea extends Modal {
 			if (blockIdExistsInFile(fileText, blockId)) {
 				// This should be extremely rare, but handle it gracefully
 				new Notice(
-					"A synced block with this id already exists in this file. Please try again.",
+					"A synced block with this ID already exists in this file. Please try again.",
 					5000
 				);
 				return;

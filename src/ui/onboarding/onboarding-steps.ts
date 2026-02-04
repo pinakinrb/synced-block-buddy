@@ -216,7 +216,7 @@ function createCompletionStep(containerEl: HTMLElement, plugin?: SyncedBlockBudd
 		attr: { style: "margin: 0.5em 0; padding-left: 1.5em; color: var(--text-muted);" }
 	});
 	tipsList.createEl("li", { text: "Blocks sync automatically when you edit them" });
-	tipsList.createEl("li", { text: "Each block has a unique id" });
+	tipsList.createEl("li", { text: "Each block has a unique ID" });
 	tipsList.createEl("li", { text: "Block names must be unique" });
 	tipsList.createEl("li", { text: "Use build index to scan all files and find existing synced blocks in your vault" });
 }

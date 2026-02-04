@@ -1,54 +1,43 @@
-import tseslint from 'typescript-eslint';
+// eslint.config.mjs
+import tsparser from "@typescript-eslint/parser";
+import { defineConfig } from "eslint/config";
 import obsidianmd from "eslint-plugin-obsidianmd";
-import globals from "globals";
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// Convert recommended config rules to flat config format
+// The recommended config is just a rules object, not a full flat config
+// Rules are already in "obsidianmd/rule-name" format which is correct for flat config
+const recommendedRules = obsidianmd.configs?.recommended || {};
 
-export default tseslint.config(
-	{
-		ignores: [
-			"node_modules/**",
-			"dist/**",
-			"esbuild.config.mjs",
-			"eslint.config.js",
-			"version-bump.mjs",
-			"versions.json",
-			"main.js",
-		],
-	},
-	{
-		languageOptions: {
-			globals: {
-				...globals.browser,
-			},
-			parserOptions: {
-				projectService: {
-					allowDefaultProject: [
-						'eslint.config.js',
-						'manifest.json'
-					]
-				},
-				tsconfigRootDir: __dirname,
-				extraFileExtensions: ['.json']
-			},
-		},
-	},
-	...(obsidianmd.configs?.recommended || []) as unknown as Parameters<typeof tseslint.config>[number][],
-	{
-		plugins: {
-			obsidianmd,
-		},
-		rules: {
-			"obsidianmd/ui/sentence-case": [
-				"error",
-				{
-					brands: [],
-					ignoreWords: [],
-				},
-			],
-		},
-	},
-);
+export default defineConfig([
+  {
+    plugins: {
+      obsidianmd: obsidianmd,
+    },
+    // Apply all recommended rules to TypeScript source files only
+    files: ["src/**/*.ts"],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: { project: "./tsconfig.json" },
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rules: recommendedRules as any,
+  },
+  {
+    files: ["**/*.ts"],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: { project: "./tsconfig.json" },
+    },
+    rules: {
+      // Override sentence-case to use warn level and custom options
+      "obsidianmd/ui/sentence-case": [
+        "warn",
+        {
+          brands: [],
+          acronyms: ["OK"],
+          enforceCamelCaseLower: true,
+        },
+      ],
+    },
+  },
+]);

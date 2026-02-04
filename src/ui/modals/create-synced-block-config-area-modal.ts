@@ -201,7 +201,7 @@ export class CreateSyncedBlockConfigArea extends Modal {
 			if (blockIdExistsInFile(fileText, blockId)) {
 				// This should be extremely rare, but handle it gracefully
 				new Notice(
-					"A synced block with this ID already exists in this file. Please try again.",
+					"A synced block with this id already exists in this file. Please try again.",
 					5000
 				);
 				return;

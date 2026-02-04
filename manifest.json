@@ -1,7 +1,7 @@
 {
 	"id": "synced-blocks",
 	"name": "Synced Block Buddy",
-	"version": "1.4",
+	"version": "1.5.0",
 	"minAppVersion": "0.15.0",
 	"description": "Synced Block Buddy is a plugin that allows you to sync blocks between your notes.",
 	"author": "Pinakin",

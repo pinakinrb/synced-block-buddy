@@ -130,6 +130,21 @@ This project is licensed under the 0-BSD license.
 
 ## Changelog
 
+### 1.5.0
+- Prepare for next release
+
+### 1.4
+- Improve sentence case consistency and simplify UI text
+
+### 1.3
+- Fix async/await issues, sentence case, and ESLint configuration
+
+### 1.2
+- Add onboarding tutorial
+
+### 1.1
+- Fix description alignment with community plugin listing
+
 ### 1.0.0
 - Initial release
 - Create and manage synced blocks
@@ -137,4 +152,3 @@ This project is licensed under the 0-BSD license.
 - Interactive onboarding tutorial
 - Block index building
 - Cross-platform support
-# synced-block-buddy
